@@ -14,4 +14,5 @@ public:
 private:
 	int m_Key;
 	friend class StuManager;
+	friend bool loginUI(int choose);
 };

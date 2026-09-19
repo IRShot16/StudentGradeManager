@@ -4,7 +4,58 @@
 #include"GradeStatistics.h"
 StuManager sm;
 GradeStatistics gs(sm);
+bool loginUI(int choose) {
+	int id;
+	int key;
 
+	while (true) {
+		std::cout << "===============" << std::endl;
+				if (choose == 1) {
+			std::cout << "学生登入（esc退出）" << std::endl;
+			std::cout << "===============" << std::endl;
+
+			std::cout << ">请输入学号：";
+			std::cin >> id;
+			std::cout << ">请输入密码：";
+			std::cin >> key;
+
+			auto it = sm.m_StusIndex.find(id);
+			if (it == sm.m_StusIndex.end()) {
+				std::cout << "<学号不存在，请重新输入！" << std::endl;
+				continue;
+			}
+
+			int index = it->second;
+			if (sm.m_Stus[index].m_Key == key) {
+				std::cout << "<登录成功！" << std::endl;
+				return true;
+			}
+
+			std::cout << "<密码错误，请重新输入！" << std::endl;
+		}
+		else if (choose == 2) {
+			std::cout << "教师登入（esc退出）" << std::endl;
+			std::cout << "===============" << std::endl;
+
+			std::cout << ">请输入工号：";
+			std::cin >> id;
+
+			std::cout << ">请输入密码：";
+			std::cin >> key;
+
+			// Demo阶段先使用固定账号密码
+			if (id == 1001 && key == 123456) {
+				std::cout << "<登录成功！" << std::endl;
+				return true;
+			}
+
+			std::cout << "<账号或密码错误，请重新输入！" << std::endl;
+		}
+		else {
+			return false;
+		}
+	}
+}
 void stuUI() {
 	std::cout << "===============" << std::endl;
 	std::cout << "    学生界面    " << std::endl;
@@ -105,10 +156,12 @@ void indexUI() {
 		switch (choose) {
 		case 1:
 			std::cout << "<进入学生系统" << std::endl;
+			loginUI(1);//密码登入
 			stuUI();// 进入学生系统
 			break;
 		case 2:
 			std::cout << "<进入教师系统" << std::endl;
+			loginUI(2);//密码登入
 			teaUI();// 进入教师系统
 			break;
 		case 0:
@@ -130,7 +183,6 @@ int main() {
 	//std::cout << sm.m_Stus.back().m_ID << std::endl;
 
 	indexUI();
-	
-	
+
 	return 0;
 }

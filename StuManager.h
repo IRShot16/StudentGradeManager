@@ -8,6 +8,7 @@ private:
 	std::vector<Student> m_Stus;
 	std::unordered_map<int, int> m_StusIndex;
 	friend class GradeStatistics;
+	friend bool loginUI(int choose);
 
 public:
 	void loadStus();
