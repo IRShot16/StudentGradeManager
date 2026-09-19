@@ -1,8 +1,9 @@
 #include<iostream>
 #include<windows.h>
 #include"StuManager.h"
-
+#include"GradeStatistics.h"
 StuManager sm;
+GradeStatistics gs(sm);
 
 void stuUI() {
 	std::cout << "===============" << std::endl;
@@ -46,7 +47,8 @@ void teaUI() {
 		std::cout << "2. 删掉学生" << std::endl;
 		std::cout << "3. 修改学生" << std::endl;
 		std::cout << "4. 查询学生" << std::endl;
-		std::cout << "5. 统计成绩" << std::endl;
+		std::cout << "5. 排序成绩" << std::endl;
+		std::cout << "6. 统计成绩" << std::endl;
 		std::cout << "0. 退出" << std::endl;
 		std::cout << ">请选择序号：";
 		std::cin >> choose;
@@ -70,7 +72,12 @@ void teaUI() {
 			sm.findStu(3);
 			break;
 		case 5:
+			std::cout << "<排序成绩" << std::endl;
+			gs.sortGrade();
+			break;
+		case 6:
 			std::cout << "<统计成绩" << std::endl;
+			gs.analysisGrade();
 			break;
 		case 0:
 			std::cout << "<退出成功" << std::endl;

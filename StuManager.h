@@ -7,6 +7,7 @@ class StuManager {
 private:
 	std::vector<Student> m_Stus;
 	std::unordered_map<int, int> m_StusIndex;
+	friend class GradeStatistics;
 
 public:
 	void loadStus();

@@ -141,6 +141,7 @@
     </Manifest>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="GradeStatistics.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="StuManager.cpp" />
   </ItemGroup>
